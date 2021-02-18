@@ -17,13 +17,15 @@ header {
   }
 
   .question-box {
+    display: flex;
+    justify-content: space-between;
     height: 100px;
     padding: 10px;
     background: #fff;
     color: #e76f51;
     border: 15px #000;
     border-style: double;
-    text-align: center;
+    text-align: left;
   }
   .timer-box {
     height: 100px;
@@ -33,4 +35,22 @@ header {
     border: 15px #000;
     border-style: double;
     text-align: center;
+  }
+
+  #answerWrapper {
+      margin: 0 auto;
+  }
+  li {
+      border: 1px solid transparent;
+  }
+  li:hover {
+      border: 1px dotted black;
+  }
+
+  .submitHighScore {
+    display: none;
+    /* display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 25px; */
   }
