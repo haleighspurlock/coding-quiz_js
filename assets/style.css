@@ -23,12 +23,11 @@ header {
     padding: 10px;
     background: #fff;
     color: #e76f51;
-    border: 15px #000;
-    border-style: double;
     text-align: left;
   }
   .timer-box {
-    height: 100px;
+    width: 25%;
+    height: 25%;
     padding: 10px;
     background: #fff;
     color: #e76f51;

@@ -1,7 +1,6 @@
 var startButton = document.querySelector(".start-quiz")
 var timerElement = document.querySelector(".timer-start")
 var questionBox = document.querySelector("#question-box")
-var highScoreButton = document.querySelector(".submitHighScore")
 
 
 
@@ -78,7 +77,8 @@ function showQuizQuestion() {
 function answerClicked(event) {
     if (currentIndex === questions.length -1){
         console.log("ALL DONE!")
-        highScorePage()
+        quizFinished = true;
+        highScoreForm()
     }
     else if (event.target.textContent !== questions[currentIndex].correctAnswer) {
         console.log("Wrong!")
@@ -96,8 +96,30 @@ function answerClicked(event) {
 }
 
 function highScorePage() {
+    debugger
     window.location.replace("./highscore.html") 
 }
+
+// not sure what this function is yet tbh
+function highScoreForm(){
+    document.getElementById("question-box").innerHTML = "";
+
+    var scoreForm = document.createElement("DIV");
+    scoreForm.setAttribute("id", "scoreForm");
+
+    var enterInitials = document.createElement("INPUT");
+    enterInitials.setAttribute("value", "Please Enter Initials");
+    scoreForm.appendChild(enterInitials);
+
+    var submitButton = document.createElement("BUTTON");
+    var buttonText = document.createTextNode("Submit");
+    submitButton.appendChild(buttonText);
+    submitButton.addEventListener("click", highScorePage);
+    scoreForm.appendChild(submitButton);
+
+    questionBox.appendChild(scoreForm);
+    }
+
 
 //when start the quiz button is clicked, quiz will begin (timer starts and first question populates)
 function startTheQuiz() {
@@ -129,18 +151,17 @@ function startTheTimer () {
     if (timeLeft >= 0) {
         if (timeLeft && quizFinished > 0) {
         clearInterval(timeTracker);
-        youDidIt()
+        highScoreForm()
         }
     }
     if (timeLeft === 0) {
         // Clears interval
         clearInterval(timeTracker);
-        timesUpScore();
+        highScoreForm()
     }
 }, 1000);
 }
 
 // event listener to start the quiz
 startButton.addEventListener("click", startTheQuiz);
-highScoreButton.addEventListener("click,", highScorePage);
 
