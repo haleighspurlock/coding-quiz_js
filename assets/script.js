@@ -104,8 +104,13 @@ function highScorePage() {
         initials: enterInitials.value,
         score: finalScore
     }
-
-    localStorage.setItem("player", JSON.stringify(player))
+    var retrieveScores = localStorage.getItem("player");
+    var players  = JSON.parse(retrieveScores);
+    if (players !== null){
+        players.push(player)
+    }
+    else players = [player]
+    localStorage.setItem("player", JSON.stringify(players))
     window.location.replace("./highscore.html") 
 }
 
@@ -140,17 +145,17 @@ function startTheQuiz() {
     showQuizQuestion()
 }
 
-// when you finish the quiz with time left
-function youDidIt () {
-    questionbox.textContent = "Great Job! Enter your Initials to save your score!"
-    startButton.disabled = false;
-}
+// // when you finish the quiz with time left
+// function youDidIt () {
+//     questionbox.textContent = "Great Job! Enter your Initials to save your score!"
+//     startButton.disabled = false;
+// }
 
-// when you run out of time
-function timesUpScore () {
-    questionBox.textContent = "Oh No!! Enter your intials to save your score, but please try again!"
-    startButton.disabled = false;
-}
+// // when you run out of time
+// function timesUpScore () {
+//     questionBox.textContent = "Oh No!! Enter your intials to save your score, but please try again!"
+//     startButton.disabled = false;
+// }
 
 
 //start the timer functions as both a start and stop, which leads to a finished quiz or a timesUp function
