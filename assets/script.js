@@ -7,6 +7,7 @@ var questionBox = document.querySelector("#question-box")
 var quizFinished = false;
 var timeLeft = 60;
 var currentIndex = 0;
+var finalScore = 0;
 
 var questions = [
     {
@@ -96,7 +97,15 @@ function answerClicked(event) {
 }
 
 function highScorePage() {
-    debugger
+    var enterInitials = document.getElementById("enterInitials");
+    finalScore = finalScore + timeLeft;
+
+    var player = {
+        initials: enterInitials.value,
+        score: finalScore
+    }
+
+    localStorage.setItem("player", JSON.stringify(player))
     window.location.replace("./highscore.html") 
 }
 
@@ -108,7 +117,8 @@ function highScoreForm(){
     scoreForm.setAttribute("id", "scoreForm");
 
     var enterInitials = document.createElement("INPUT");
-    enterInitials.setAttribute("value", "Please Enter Initials");
+    enterInitials.setAttribute("id", "enterInitials");
+    enterInitials.setAttribute("placeholder", "Please Enter Initials");
     scoreForm.appendChild(enterInitials);
 
     var submitButton = document.createElement("BUTTON");
