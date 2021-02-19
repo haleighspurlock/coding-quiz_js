@@ -9,14 +9,12 @@ var timeLeft = 60;
 var currentIndex = 0;
 var finalScore = 0;
 
+// questions and answer object
+
 var questions = [
     {
         question: "Which of these is a Javascript Data Type?",
         answers: [ 
-            //"Number"
-            //"String"
-            //"Boolean"
-            //"All of the Above", isCorrect: true}
             "Number", 
             "String", 
             "Boolean", 
@@ -57,6 +55,7 @@ var questions = [
     }
 ]
 
+// show and iterates through current quiz question
 function showQuizQuestion() {
     var answerWrapper = document.createElement("DIV");
     answerWrapper.setAttribute("id", "answerWrapper");
@@ -75,6 +74,7 @@ function showQuizQuestion() {
     questionBox.appendChild(answerWrapper);
 }
 
+// what happens when a question is answered
 function answerClicked(event) {
     if (currentIndex === questions.length -1){
         console.log("ALL DONE!")
@@ -96,6 +96,7 @@ function answerClicked(event) {
 
 }
 
+// gets initials and scores and sends to new high score page
 function highScorePage() {
     var enterInitials = document.getElementById("enterInitials");
     finalScore = finalScore + timeLeft;
@@ -114,7 +115,7 @@ function highScorePage() {
     window.location.replace("./highscore.html") 
 }
 
-// not sure what this function is yet tbh
+// sets the form/button to get score
 function highScoreForm(){
     document.getElementById("question-box").innerHTML = "";
 
@@ -144,19 +145,6 @@ function startTheQuiz() {
     startTheTimer()
     showQuizQuestion()
 }
-
-// // when you finish the quiz with time left
-// function youDidIt () {
-//     questionbox.textContent = "Great Job! Enter your Initials to save your score!"
-//     startButton.disabled = false;
-// }
-
-// // when you run out of time
-// function timesUpScore () {
-//     questionBox.textContent = "Oh No!! Enter your intials to save your score, but please try again!"
-//     startButton.disabled = false;
-// }
-
 
 //start the timer functions as both a start and stop, which leads to a finished quiz or a timesUp function
 function startTheTimer () {
